@@ -72,9 +72,11 @@ function updateLeaderboard() {
 
 document.getElementById('newGame').onclick = function() {
     resetGame(); // Reset game data
-    document.getElementById('leaderboard').style.display = 'none'; // Hide leaderboard
-    document.getElementById('player-input').style.display = 'flex'; // Show player input again
-    document.getElementById('startGame').disabled = true; // Disable start button
+    document.getElementById('leaderboard').style.display = 'none';
+    document.getElementById('player-input').style.display = 'flex'; 
+    document.getElementById('startGame').disabled = true; 
+     document.getElementById('playerList').innerHTML = ''; 
+    document.getElementById('playerName').value = ''; 
 };
 
 function resetGame() {
@@ -106,13 +108,12 @@ function startTimer() {
 
 function nextTurn() {
     // Randomly select the next player
-    currentPlayerIndex = (currentPlayerIndex + 1) % players.length; // Rotate through players
+    currentPlayerIndex = (currentPlayerIndex + 1) % players.length; 
     const currentPlayer = players[currentPlayerIndex];
 
-    // Display current player's turn
     document.getElementById('currentTurn').textContent = `${currentPlayer}'s turn!`;
 
-    timeLeft = 60; // Reset timer for the new player
+    timeLeft = 60;
     document.getElementById('timer').textContent = `Time left: ${timeLeft} seconds`;
     document.getElementById('truthOrDare').textContent = ''; // Clear the question
     document.getElementById('done').style.display = 'none'; // Hide Done button
